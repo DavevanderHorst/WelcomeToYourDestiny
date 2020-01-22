@@ -28,6 +28,8 @@ namespace WelcomeToYourDestiny.Player
 
         public void LevelUp()
         {
+            this.HealthComponent.Health.Max += 8;
+            this.ManaComponent.Mana.Max += 4;
             Strength += 1;
             Speed += 1;
             Level += 1;

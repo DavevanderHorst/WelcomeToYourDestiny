@@ -17,28 +17,28 @@ namespace WelcomeToYourDestiny.PlayerMessagesBox
             _combatMessages = _world.Get<List<string>>();
         }
 
-        public void StartFightMessage()
+        public void StartFightMessage(string name)
         {
-            _combatMessages.Add("You charge towards the monster. ATTACK!!");
+            _combatMessages.Add($"You charge towards the {name}. ATTACK!!");
         }
         public void PlayerDamageMessage(int damage, int monsterHitPoints)
         {
             _combatMessages.Add($"You swing and hit for {damage} damage. The monster has {monsterHitPoints} hp left.");
         }
 
-        public void MonsterDamageMessage(int damage)
+        public void MonsterDamageMessage(int damage, string name, int playerHealth)
         {
-            _combatMessages.Add($"The monster swings at you and hits you for {damage} damage.");
+            _combatMessages.Add($"The {name} hits you for {damage} damage. You have {playerHealth} hp left.");
         }
 
-        public void VictoryMessage()
+        public void VictoryMessage(string name)
         {
-            _combatMessages.Add($"You kill the monster. You feel strong.");
+            _combatMessages.Add($"You kill the {name}. You feel strong.");
         }
 
-        public void DefeatMessage()
+        public void DefeatMessage(string name)
         {
-            _combatMessages.Add($"The monster lands a devestating blow. You die!");
+            _combatMessages.Add($"The {name} lands a devestating blow. You die!");
         }
 
         internal void GainedExperienceMessage(int experience)

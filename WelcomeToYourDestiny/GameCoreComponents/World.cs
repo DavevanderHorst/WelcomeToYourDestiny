@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ruzzie.Common.Types;
 
 namespace WelcomeToYourDestiny.GameCoreComponents
 {
@@ -23,6 +24,18 @@ namespace WelcomeToYourDestiny.GameCoreComponents
         public void Set<T>(T updateOrSet)
         {
             _evilState[typeof(T)] = updateOrSet;
+        }
+
+        public Option<T> GetOrNone<T>()
+        {
+            var key = typeof(T);
+
+            if (!_evilState.ContainsKey(key))
+            {
+                return Option<T>.None;
+            }
+
+            return (T) _evilState[key];
         }
     }
 }

@@ -43,29 +43,22 @@ namespace WelcomeToYourDestiny.PlayerMessagesBox
 
         public void InCombatMessage()
         {
-            _messageBox.Enqueue("You cant move when your in combat!  kuch*COWARD*kuch.");
+            _messageBox.Enqueue("You cant move when your in combat!");
         }
 
-        public void MonsterMoveOutMessage()
+        public void MonsterMoveOutMessage(string name)
         {
-            _messageBox.Enqueue("A monster moves away from you...");
+            _messageBox.Enqueue($"A {name} moves away from you...");
         }
 
-        public void MonsterMoveInMessage()
+        public void MonsterMoveInMessage(string name)
         {
-            _messageBox.Enqueue("A monster moves into your personal space...");
+            _messageBox.Enqueue($"A {name} moves into your personal space...");
         }
 
-        public void MonstersInRoomMessage(int monstersInSameRoom)
+        public void MonstersInRoomMessage(string name)
         {
-            if (monstersInSameRoom == 1)
-            {
-                _messageBox.Enqueue("A monster patrols here.");
-            }
-            else
-            {
-                _messageBox.Enqueue($"{monstersInSameRoom} monsters patrols here.");
-            }
+            _messageBox.Enqueue($"A {name} patrols here.");
         }
 
         public void NoMonsterToFightMessage()

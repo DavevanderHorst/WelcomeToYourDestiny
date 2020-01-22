@@ -12,7 +12,7 @@ namespace WelcomeToYourDestiny.Monsters
         private double _interval;
         public TimeSpan PreviousMonster;
         public readonly MonsterPosition MonsterPosition;
-        Random random = new Random();
+        readonly Random _random = new Random();
         public MonsterStats MonsterStats;
 
         public MonsterMoveController(MonsterPosition monsterPosition, MonsterStats monsterStats)
@@ -20,26 +20,26 @@ namespace WelcomeToYourDestiny.Monsters
             MonsterStats = monsterStats;
             MonsterPosition = monsterPosition;
 
-            _interval = random.Next(1, 6);
+            _interval = _random.Next(1, 6);
         }
 
         public void Update(GameTime gameTime)
         {
-            int nextMove = random.Next(0, 4);
-            _interval = random.Next(20, 50) / 10.0;
+            int nextMove = _random.Next(0, 4);
+            _interval = _random.Next(20, 50) / 10.0;
             switch (nextMove)
             {
                 case 0:
-                    MonsterPosition.MoveUp();
+                    MonsterPosition.MoveUp(MonsterStats);
                     break;
                 case 1:
-                    MonsterPosition.MoveRight();
+                    MonsterPosition.MoveRight(MonsterStats);
                     break;
                 case 2:
-                    MonsterPosition.MoveDown();
+                    MonsterPosition.MoveDown(MonsterStats);
                     break;
                 case 3:
-                    MonsterPosition.MoveLeft();
+                    MonsterPosition.MoveLeft(MonsterStats);
                     break;
             }
         }

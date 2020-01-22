@@ -21,59 +21,59 @@ namespace WelcomeToYourDestiny.Monsters
             _checker = new DirectionChecker(world);
         }
 
-        public void MoveUp()
+        public void MoveUp(MonsterStats monster)
         {
             if (_checker.CanMonsterMoveInDirection(Map.Map[NumberOfArrayMonsterIsIn -Map.MapWidth]))
             {
-                MoveTo(-Map.MapWidth);
+                MoveTo(-Map.MapWidth, monster);
             }
             else
             {
-                MoveRight();
+                MoveRight(monster);
             }
         }
 
-        public void MoveRight()
+        public void MoveRight(MonsterStats monster)
         {
             if (_checker.CanMonsterMoveInDirection(Map.Map[NumberOfArrayMonsterIsIn + 1]))
             {
-                MoveTo(+1);
+                MoveTo(+1, monster);
             }
             else
             {
-                MoveDown();
+                MoveDown(monster);
             }
         }
-        public void MoveDown()
+        public void MoveDown(MonsterStats monster)
         {
             if (_checker.CanMonsterMoveInDirection(Map.Map[NumberOfArrayMonsterIsIn + Map.MapWidth]))
             {
-                MoveTo(Map.MapWidth);
+                MoveTo(Map.MapWidth, monster);
             }
             else
             {
-                MoveLeft();
+                MoveLeft(monster);
             }
         }
-        public void MoveLeft()
+        public void MoveLeft(MonsterStats monster)
         {
             if (_checker.CanMonsterMoveInDirection(Map.Map[NumberOfArrayMonsterIsIn - 1]))
             {
-                MoveTo(-1);
+                MoveTo(-1, monster);
             }
             else
             {
-                MoveUp();
+                MoveUp(monster);
             }
         }
 
-        public void MoveTo(int movement)
+        public void MoveTo(int movement, MonsterStats monster)
         {
             var player = _world.Get<PlayerPosition>();
             if (player.NumberOfArrayPlayerIsIn == NumberOfArrayMonsterIsIn)
             {
                 MoveMessages message = new MoveMessages(_world);
-                message.MonsterMoveOutMessage();
+                message.MonsterMoveOutMessage(monster.Name);
                 _world.LinesTypedInMessageBox++;
             }
             Changed = true;
@@ -83,7 +83,7 @@ namespace WelcomeToYourDestiny.Monsters
             if (player.NumberOfArrayPlayerIsIn == NumberOfArrayMonsterIsIn)
             {
                 MoveMessages message = new MoveMessages(_world);
-                message.MonsterMoveInMessage();
+                message.MonsterMoveInMessage(monster.Name);
                 _world.LinesTypedInMessageBox++;
             }
         }

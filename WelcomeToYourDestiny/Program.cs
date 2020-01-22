@@ -35,14 +35,14 @@ namespace WelcomeToYourDestiny
             {
                 Health = new RegenerateAttribute()
                 {
-                    Current = 50, Max = 100, Name = "Health", RegenRatePerSecond = 1
+                    Current = 27, Max = 40, Name = "Health", RegenRatePerSecond = 0.5
                 }
             };
             ManaComponent mana = new ManaComponent()
             {
                 Mana = new RegenerateAttribute()
                 {
-                    Current = 30, Max = 60, Name = "Mana", RegenRatePerSecond = 0.2
+                    Current = 25, Max = 30, Name = "Mana", RegenRatePerSecond = 0.2
                 }
             };
             ExperienceBar xpBar = new ExperienceBar();

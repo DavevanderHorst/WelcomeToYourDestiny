@@ -34,6 +34,7 @@ namespace WelcomeToYourDestiny.Renderers
             if (_xpPoints > XpNeededForLevel)
             {
                 XpNeededForLevel = XpNeededForLevel * 2 + 10;
+
                 return true;
             }
 

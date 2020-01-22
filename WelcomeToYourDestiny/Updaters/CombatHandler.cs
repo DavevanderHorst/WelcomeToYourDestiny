@@ -33,6 +33,7 @@ namespace WelcomeToYourDestiny.Updaters
             _startUpdate = true;
             _howFastPlayerHits = TimeSpan.FromSeconds(3-(_player.Speed*0.08));
             _howFastMonsterHits = TimeSpan.FromSeconds(3-(_monster.Speed*0.08));
+            _messages.StartFightMessage(_monster.Name);
         }
 
         public void Update(GameTime gameTime)
@@ -46,7 +47,7 @@ namespace WelcomeToYourDestiny.Updaters
                     _monster.CurrentHitPoints -= damage;
                     if (_monster.CurrentHitPoints <= 0)
                     {
-                        _messages.VictoryMessage();
+                        _messages.VictoryMessage(_monster.Name);
                         int experience = (_monster.Speed + _monster.Strength) * 3;
                         if(_player.XpBar.GainedExperience(experience))       // if true, player gained level.
                         {
@@ -71,13 +72,13 @@ namespace WelcomeToYourDestiny.Updaters
                     {
                         int damage = _random.Next(3, 6) + (int)(_monster.Strength * 0.4);
                         _player.HealthComponent.Health.Current -= damage;
-                        _messages.MonsterDamageMessage(damage);
+                        _messages.MonsterDamageMessage(damage, _monster.Name, (int)_player.HealthComponent.Health.Current);
                         _previousMonsterAttackGameTime = gameTime.Elapsed;
                     }
 
                     if (_player.HealthComponent.Health.Current <= 0)
                     {
-                        _messages.DefeatMessage();
+                        _messages.DefeatMessage(_monster.Name);
                         _startUpdate = false;
                     }
                 }

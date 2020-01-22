@@ -53,23 +53,23 @@ namespace WelcomeToYourDestiny.MapCreators
         public MonsterMoveController[] CreateMonsters(World world, MapLevelDetails map)
         {
             MonsterPosition monster1 = new MonsterPosition(map, world);
-            monster1.MoveTo(151);
             MonsterStats statsMonster1 = new MonsterStats("rabbit");
+            monster1.MoveTo(151, statsMonster1);
             MonsterPosition monster2 = new MonsterPosition(map, world);
-            monster2.MoveTo(152);
             MonsterStats statsMonster2 = new MonsterStats("rabbit");
+            monster2.MoveTo(152, statsMonster2);
             MonsterPosition monster3 = new MonsterPosition(map, world);
-            monster3.MoveTo(177);
             MonsterStats statsMonster3 = new MonsterStats("rabbit");
+            monster3.MoveTo(177, statsMonster3);
             MonsterPosition monster4 = new MonsterPosition(map, world);
-            monster4.MoveTo(60);
             MonsterStats statsMonster4 = new MonsterStats("cat");
+            monster4.MoveTo(60, statsMonster4);
             MonsterPosition monster5 = new MonsterPosition(map, world);
-            monster5.MoveTo(36);
             MonsterStats statsMonster5 = new MonsterStats("cat");
+            monster5.MoveTo(36, statsMonster5);
             MonsterPosition monster6 = new MonsterPosition(map, world);
-            monster6.MoveTo(37);
             MonsterStats statsMonster6 = new MonsterStats("cat");
+            monster6.MoveTo(37, statsMonster6);
             MonsterMoveController[] monsters = new MonsterMoveController[6];
             monsters[0] = new MonsterMoveController(monster1, statsMonster1);
             monsters[1] = new MonsterMoveController(monster2,statsMonster2);

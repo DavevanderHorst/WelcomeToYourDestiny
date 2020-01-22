@@ -62,25 +62,17 @@ namespace WelcomeToYourDestiny.Player
 
                 if (monsters.Length > 1)
                 {
-                    int monstersInSameRoom = 0;
                     foreach (var monster in monsters)
                     {
                         if (monster.MonsterPosition.NumberOfArrayMonsterIsIn == NumberOfArrayPlayerIsIn)
                         {
-                            monstersInSameRoom++;
+                            _world.LinesTypedInMessageBox++;
+                            MoveMessages message = new MoveMessages(_world);
+                            message.MonstersInRoomMessage(monster.MonsterStats.Name);
                         }
                     }
-
-                    if (monstersInSameRoom > 0)
-                    {
-                        MoveMessages message = new MoveMessages(_world);
-                        message.MonstersInRoomMessage(monstersInSameRoom);
-                        _world.LinesTypedInMessageBox++;
-                    }
                 }
-                
             }
-            
         }
     }
 }
